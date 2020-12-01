@@ -1,0 +1,38 @@
+From f0997536a7a3e384bfe64b67c5c1f874656042c6 Mon Sep 17 00:00:00 2001
+From: Kai-Chuan Hsieh <kaichuan.hsieh@canonical.com>
+Date: Mon, 28 Sep 2020 10:43:28 +0800
+Subject: [PATCH] quirks: Customize ALPS i2c touchpad palm detect pressure
+ threshold
+
+ALPS i2c touchpad support ABS_PRESSURE and ABS_MT_PRESSURE capabilities,
+The default threshold 130 is too easy to across while finger movement.
+It will cause the cursor stalled after the threshold is achieved, which
+impacts user experience.
+Test with some ALPS touchpads 0488:101A, 0488:101D, 0488:101E, the value
+180 is good on those platforms.
+
+Signed-off-by: Kai-Chuan Hsieh <kaichuan.hsieh@canonical.com>
+---
+ quirks/30-vendor-alps.quirks | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/quirks/30-vendor-alps.quirks b/quirks/30-vendor-alps.quirks
+index 6ebcbb85..abdf98ea 100644
+--- a/quirks/30-vendor-alps.quirks
++++ b/quirks/30-vendor-alps.quirks
+@@ -19,6 +19,12 @@ MatchVendor=0x0002
+ MatchProduct=0x0008
+ ModelALPSSerialTouchpad=1
+ 
++[ALPS i2c Touchpads]
++MatchUdevType=touchpad
++MatchBus=i2c
++MatchVendor=0x0488
++AttrPalmPressureThreshold=180
++
+ [ALPS v8 Touchpads]
+ MatchUdevType=touchpad
+ MatchBus=ps2
+-- 
+2.25.1
+
