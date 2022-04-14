@@ -1,3 +1,4 @@
 #placeholder
 0001-quirks-Customize-ALPS-i2c-touchpad-palm-detect-press.patch
 add-model-quirk-for-dell-precision-7x50.patch
+0001-evdev-strip-the-device-name-of-format-directives.patch

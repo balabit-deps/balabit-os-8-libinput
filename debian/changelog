@@ -1,3 +1,13 @@
+libinput (1.15.5-1ubuntu0.3) focal-security; urgency=medium
+
+  * SECURITY UPDATE: Format string vulnerability
+    - d/p/0001-evdev-strip-the-device-name-of-format-directives.patch:
+      Cleanup device name to ensure format string directives are
+      neutralised when logging in src/evdev.c. Based on upstream patch.
+    - CVE-2022-1215
+
+ -- Alex Murray <alex.murray@canonical.com>  Thu, 14 Apr 2022 13:30:23 +0930
+
 libinput (1.15.5-1ubuntu0.2) focal; urgency=medium
 
   * quirks: Unset INPUT_PROP_BUTTONPAD for Dell Precision 7550/7750.
